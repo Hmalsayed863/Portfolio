@@ -171,11 +171,16 @@ section{padding:7rem 2.5rem;position:relative;z-index:2}
 .pi:hover{background:var(--su)}
 .pi:hover::before{transform:scaleY(1)}
 .pi:hover::after{transform:translateX(0)}
-.pi-n{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--fa);line-height:1}
+.pi-n{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:transparent;line-height:1;transition:color .3s ease;-webkit-text-stroke:1px rgba(234,229,220,0.08)}
+.pi:hover .pi-n{color:var(--fa);-webkit-text-stroke:1px rgba(168,85,247,.3)}
 .pi-cat{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
-.pi-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;line-height:1.2;margin-bottom:.5rem;transition:color .2s}
+.pi-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;line-height:1.35;margin-bottom:.5rem;transition:color .2s;letter-spacing:.01em}
 .pi:hover .pi-title{color:var(--ac)}
 .pi-desc{font-size:.76rem;color:var(--dim);line-height:1.75;max-width:560px}
+.pi-stack{display:inline-flex;flex-wrap:wrap;gap:.35rem;margin-top:.75rem}
+.pi-stack span{font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.14em;border:1px solid var(--ru);color:var(--dim);padding:.2rem .5rem;transition:border-color .2s,color .2s}
+.pi:hover .pi-stack span{border-color:rgba(168,85,247,.35);color:var(--ac)}
+.pi-featured{border-left:none}
 .pi-arr{font-size:1.3rem;color:var(--fa);transition:color .2s,transform .3s}
 .pi:hover .pi-arr{color:var(--ac);transform:translateX(6px)}
 .rlist{display:flex;flex-direction:column;gap:1px;background:var(--ru)}
@@ -398,12 +403,13 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
   <div class="sh rv">
     <span class="sh-num">03 / Projects</span>
     <h2 class="sh-title">Built <span class="ghost">Projects</span></h2>
-    <span class="sh-sub">Designed &amp; engineered</span>
+    <span class="sh-sub">Designed, built &amp; shipped</span>
   </div>
   <div class="plist">
-    <div class="pi rv"><div class="pi-n">01</div><div><div class="pi-cat">Web App · Privacy Tech</div><h3 class="pi-title">PDPL Compliance Platform</h3><p class="pi-desc">A platform helping companies comply with Saudi Arabia's Personal Data Protection Law, streamlining privacy obligations and legal requirements across PDPL, SDAIA, GDPR, NIST AI RMF, and ISO frameworks.</p></div><div class="pi-arr">→</div></div>
-    <div class="pi rv rv-d2"><div class="pi-n">02</div><div><div class="pi-cat">ML · Cybersecurity</div><h3 class="pi-title">Intrusion Detection System</h3><p class="pi-desc">A machine learning-powered network IDS that identifies and flags anomalous behavior and potential security threats in real time using advanced classification algorithms.</p></div><div class="pi-arr">→</div></div>
-    <div class="pi rv rv-d3"><div class="pi-n">03</div><div><div class="pi-cat">AI · Research</div><h3 class="pi-title">RAG for Federated Learning</h3><p class="pi-desc">Designed a Retrieval-Augmented Generation system enabling natural-language interrogation of federated learning experiments, bridging ML research accessibility.</p></div><div class="pi-arr">→</div></div>
+    <div class="pi rv pi-featured"><div class="pi-n">01</div><div><div class="pi-cat">Capstone · Full-Stack · AI Governance</div><h3 class="pi-title">Arbiter — Smart City Data Governance Gateway</h3><p class="pi-desc">Senior capstone — a governance decision-support platform for smart-city AI. Accepts free-text use case descriptions, extracts governance metadata automatically, generates synthetic digital twin data (CCTV, IoT sensors, energy meters), and evaluates the case across 11 Saudi &amp; international frameworks with 92 policy rules and 57 controls. Produces multi-dimensional intelligence scores (privacy, ethics, security, sovereignty, societal impact), and outputs an audit-ready PDF with explanations and a prioritized remediation plan.<br><br><span class="pi-stack"><span>React + Vite</span><span>Flask</span><span>Python</span><span>TailwindCSS</span><span>Recharts</span><span>Pydantic</span><span>fpdf2</span><span>PDPL</span><span>SDAIA</span><span>GDPR</span><span>ISO 27001</span><span>NCA ECC</span></span></p></div><div class="pi-arr">→</div></div>
+    <div class="pi rv rv-d2"><div class="pi-n">02</div><div><div class="pi-cat">Big Data · Federated Learning · Cybersecurity</div><h3 class="pi-title">NeuroGrid — Distributed Agentic Energy Intelligence</h3><p class="pi-desc">A high-performance, fault-tolerant federated learning system built on Apache Spark for smart city energy forecasting. Processes 86.2M rows from ~1,400 households using Spark MLlib KMeans clustering for stratified sampling. Trains 15 independent agents via distributed mapPartitions — each agent learns on private local data. Defends against Byzantine attacks using Multi-Krum filtering (80% acceptance rate). Achieved 91.2% accuracy and 1.7× speedup over gRPC at scale, with an 11% recall improvement for catching energy surges.<br><br><span class="pi-stack"><span>Apache Spark</span><span>PySpark</span><span>Spark MLlib</span><span>Federated Learning</span><span>Python</span><span>NumPy</span><span>Pandas</span><span>Multi-Krum</span><span>Byzantine Defense</span><span>Saudi Vision 2030</span></span></p></div><div class="pi-arr">→</div></div>
+    <div class="pi rv rv-d3"><div class="pi-n">03</div><div><div class="pi-cat">ML · Cybersecurity</div><h3 class="pi-title">Intrusion Detection System</h3><p class="pi-desc">A machine learning-powered network IDS that identifies and flags anomalous behavior and potential security threats in real time using advanced classification algorithms trained on network traffic data.<br><br><span class="pi-stack"><span>Python</span><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Machine Learning</span><span>Network Security</span></span></p></div><div class="pi-arr">→</div></div>
+    <div class="pi rv rv-d4"><div class="pi-n">04</div><div><div class="pi-cat">AI · NLP · Federated Learning</div><h3 class="pi-title">RAG for Federated Learning</h3><p class="pi-desc">Designed a Retrieval-Augmented Generation system enabling natural-language interrogation of federated learning experiments — bridging the gap between distributed ML research and human-readable insights.<br><br><span class="pi-stack"><span>Python</span><span>LangChain</span><span>Vector DB</span><span>RAG</span><span>NLP</span><span>Federated Learning</span><span>Transformers</span></span></p></div><div class="pi-arr">→</div></div>
   </div>
 </section>
 
