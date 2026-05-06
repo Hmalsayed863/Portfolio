@@ -12,6 +12,7 @@
   --fa:rgba(234,229,220,0.055);--ru:rgba(234,229,220,0.08);
   --ac:#A855F7;--ac2:#C084FC;--ac3:rgba(168,85,247,0.12);
   --gr:#22C55E;--glow:rgba(168,85,247,0.35);
+  --nav-h:62px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -57,7 +58,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Syne',sans-serif;overflo
 #cring.big{width:48px;height:48px;border-color:var(--ac);}
 
 /* ── NAV ── */
-nav{position:fixed;top:2px;left:0;right:0;z-index:200;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;border-bottom:1px solid var(--ru);background:rgba(10,9,8,.88);backdrop-filter:blur(24px)}
+nav{position:fixed;top:2px;left:0;right:0;z-index:200;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;border-bottom:1px solid var(--ru);background:rgba(10,9,8,.88);backdrop-filter:blur(24px)}
 .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;color:var(--ink);text-decoration:none;position:relative}
 .nav-logo .dot{color:var(--ac)}
 .nav-logo::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
@@ -87,14 +88,57 @@ nav{position:fixed;top:2px;left:0;right:0;z-index:200;height:62px;display:flex;a
 .sw-txt{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--ac)}
 #sw-cycle{display:inline}
 
-/* ── HERO ── */
-.hero{min-height:100vh;padding:0 2.5rem 4rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;z-index:2}
-.hero-wm{position:absolute;bottom:-4vw;left:50%;transform:translateX(-50%);font-family:'Bebas Neue',sans-serif;font-size:30vw;line-height:.8;color:var(--fa);letter-spacing:-.02em;white-space:nowrap;pointer-events:none;user-select:none;animation:wmShimmer 6s ease-in-out infinite}
+/* ── HERO ── FIXED LAYOUT ── */
+.hero{
+  min-height:100vh;
+  padding:calc(var(--nav-h) + 5rem) 2.5rem 4rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:3rem;
+  position:relative;
+  overflow:hidden;
+  z-index:2;
+}
+.hero-wm{
+  position:absolute;
+  bottom:-2vw;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(8rem,22vw,22vw);
+  line-height:.8;
+  color:var(--fa);
+  letter-spacing:-.02em;
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+  animation:wmShimmer 6s ease-in-out infinite;
+  z-index:0;
+}
 @keyframes wmShimmer{0%,100%{color:rgba(234,229,220,0.055)}50%{color:rgba(168,85,247,0.07)}}
-.hero-labels{position:absolute;top:6rem;left:2.5rem;right:2.5rem;display:flex;justify-content:space-between;opacity:0;animation:fade .7s ease forwards 1.1s}
+
+.hero-labels{
+  display:flex;
+  justify-content:space-between;
+  gap:2rem;
+  opacity:0;
+  animation:fade .7s ease forwards 1.1s;
+  position:relative;
+  z-index:2;
+}
 .hlabel{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);line-height:1.8}
 .hlabel .ac{color:var(--ac)}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5.5rem,13vw,15rem);line-height:.88;letter-spacing:.025em;position:relative;z-index:2;margin-bottom:3.5rem}
+
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,10vw,11rem);
+  line-height:.9;
+  letter-spacing:.025em;
+  position:relative;
+  z-index:2;
+  margin:auto 0;
+}
 .hero-title .line{overflow:hidden;display:block}
 .hero-title .line>span{display:block;transform:translateY(105%);animation:slideUp .85s cubic-bezier(.16,1,.3,1) forwards}
 .hero-title .line:nth-child(1)>span{animation-delay:.05s}
@@ -105,8 +149,20 @@ nav{position:fixed;top:2px;left:0;right:0;z-index:200;height:62px;display:flex;a
 .hero-title .ghost{-webkit-text-stroke:1px rgba(234,229,220,.2);color:transparent}
 @keyframes slideUp{to{transform:translateY(0)}}
 @keyframes fade{to{opacity:1}}
-.hero-bottom{display:grid;grid-template-columns:1fr auto 1fr;gap:3rem;align-items:end;border-top:1px solid var(--ru);padding-top:2rem;opacity:0;animation:fade .7s ease forwards .9s}
-.hero-desc{font-size:.87rem;line-height:1.9;color:rgba(234,229,220,0.65);max-width:340px}
+
+.hero-bottom{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:3rem;
+  align-items:end;
+  border-top:1px solid var(--ru);
+  padding-top:2rem;
+  opacity:0;
+  animation:fade .7s ease forwards .9s;
+  position:relative;
+  z-index:2;
+}
+.hero-desc{font-size:.87rem;line-height:1.8;color:rgba(234,229,220,0.65);max-width:340px}
 .hero-counters{display:flex;gap:2.5rem;justify-content:center}
 .hc{text-align:center}
 .hc-n{display:block;font-family:'Bebas Neue',sans-serif;font-size:3.2rem;line-height:1;color:var(--ink)}
@@ -118,10 +174,6 @@ nav{position:fixed;top:2px;left:0;right:0;z-index:200;height:62px;display:flex;a
 .btn-y:hover{opacity:.9;gap:1.6rem;box-shadow:0 0 30px var(--glow)}
 .btn-ghost{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--ru);padding-bottom:.2rem;transition:color .2s,border-color .2s}
 .btn-ghost:hover{color:var(--ink);border-color:var(--ac)}
-.scroll-hint{position:absolute;bottom:4rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fade .7s ease forwards 1.5s}
-.line-down{width:1px;height:48px;background:linear-gradient(to bottom,var(--ac),transparent);animation:drip 1.8s ease-in-out infinite}
-@keyframes drip{0%,100%{transform:scaleY(0);transform-origin:top}40%{transform:scaleY(1);transform-origin:top}50%{transform:scaleY(1);transform-origin:bottom}90%{transform:scaleY(0);transform-origin:bottom}}
-.hint-txt{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);writing-mode:vertical-rl}
 
 /* ── MARQUEE ── */
 .mq{background:var(--ac);overflow:hidden;position:relative;z-index:2}
@@ -241,22 +293,29 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
+  .hero{padding:calc(var(--nav-h) + 4rem) 1.5rem 3rem}
   .hero-bottom{grid-template-columns:1fr;gap:2rem}
   .hero-counters{display:none}
+  .hero-cta{align-items:flex-start}
   .about-grid{grid-template-columns:1fr;gap:2.5rem}
   .cgrid{grid-template-columns:1fr 1fr}
-  .pi{grid-template-columns:1fr;gap:.5rem}
+  .pi{grid-template-columns:1fr;gap:.5rem;padding:1.75rem 1.5rem}
   .pi-n,.pi-arr{display:none}
-  .ri{grid-template-columns:40px 1fr}
+  .ri{grid-template-columns:40px 1fr;padding:1.4rem 1.5rem}
   .ri-tag{display:none}
+  section{padding:5rem 1.5rem}
 }
 @media(max-width:600px){
+  nav{padding:0 1.25rem}
   nav .nav-links{display:none}
   nav .nav-pill{display:none}
-  .sh-sub{margin-left:0}
+  .sh-sub{margin-left:0;width:100%}
   .cgrid{grid-template-columns:1fr}
-  .hero-title{font-size:clamp(4rem,18vw,8rem)}
+  .hero-title{font-size:clamp(3.5rem,16vw,7rem)}
+  .hero-labels{flex-direction:column;gap:.5rem}
+  .hlabel{text-align:left !important}
   #status-widget{display:none}
+  footer{flex-direction:column;gap:.5rem;text-align:center}
 }
 </style>
 </head>
@@ -307,15 +366,18 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-wm">HASSAN</div>
+
   <div class="hero-labels">
     <span class="hlabel"><span class="ac">01 /</span> Introduction<br>AI Developer &amp; Designer</span>
     <span class="hlabel" style="text-align:right">Effat University<br>Jeddah, Saudi Arabia</span>
   </div>
+
   <h1 class="hero-title">
     <span class="line"><span>AI</span></span>
     <span class="line"><span class="ac">Developer</span></span>
     <span class="line"><span class="ser ghost">&amp; Designer</span></span>
   </h1>
+
   <div class="hero-bottom">
     <p class="hero-desc">Senior AI student building intelligent systems that bridge cutting-edge research and real-world impact. Specializing in privacy tech, ML security, and generative AI.</p>
     <div class="hero-counters">
@@ -328,7 +390,6 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
       <a href="#contact" class="btn-ghost">Get In Touch ↓</a>
     </div>
   </div>
-  <div class="scroll-hint"><div class="line-down"></div><span class="hint-txt">Scroll</span></div>
 </section>
 
 <!-- MARQUEE -->
