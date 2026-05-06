@@ -215,6 +215,26 @@ section{padding:7rem 2.5rem;position:relative;z-index:2}
 .skill-fill{height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));width:0%;transition:width 1.2s cubic-bezier(.16,1,.3,1);position:relative}
 .skill-fill::after{content:'';position:absolute;right:0;top:-2px;width:6px;height:6px;background:var(--ac2);border-radius:50%;box-shadow:0 0 8px var(--ac)}
 
+/* ── EDUCATION ── */
+.edu-list{display:flex;flex-direction:column;gap:1px;background:var(--ru);position:relative}
+.edu-list::before{content:'';position:absolute;left:calc(64px + 2.5rem + .75rem);top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--ac) 15%,var(--ac) 85%,transparent);opacity:.25}
+.edu-item{background:var(--bg);padding:2.25rem 2.5rem;display:grid;grid-template-columns:64px 1fr auto;gap:2rem;align-items:flex-start;position:relative;overflow:hidden;transition:background .3s}
+.edu-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ac);transform:scaleY(0);transform-origin:bottom;transition:transform .35s ease}
+.edu-item:hover{background:var(--su)}
+.edu-item:hover::before{transform:scaleY(1)}
+.edu-dot{position:relative;width:64px;display:flex;justify-content:center;padding-top:.4rem}
+.edu-dot span{width:14px;height:14px;border:2px solid var(--ac);border-radius:50%;background:var(--bg);box-shadow:0 0 0 4px var(--bg);position:relative;z-index:2;transition:background .3s,box-shadow .3s}
+.edu-item:hover .edu-dot span{background:var(--ac);box-shadow:0 0 0 4px var(--bg),0 0 16px var(--glow)}
+.edu-period{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ac);margin-bottom:.55rem}
+.edu-degree{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;line-height:1.1;margin-bottom:.4rem;color:var(--ink);transition:color .2s}
+.edu-item:hover .edu-degree{color:var(--ac)}
+.edu-school{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
+.edu-loc{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:.85rem}
+.edu-desc{font-size:.78rem;color:var(--dim);line-height:1.75;max-width:560px}
+.edu-status{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;padding:.35rem .7rem;border:1px solid var(--ru);color:var(--dim);white-space:nowrap;transition:border-color .2s,color .2s,background .2s;align-self:flex-start;margin-top:.4rem}
+.edu-status.current{border-color:var(--gr);color:var(--gr);background:rgba(34,197,94,.06)}
+.edu-status.done{border-color:rgba(168,85,247,.4);color:var(--ac)}
+
 /* ── PROJECTS & RESEARCH ── */
 .plist{display:flex;flex-direction:column;gap:1px;background:var(--ru)}
 .pi{background:var(--bg);padding:2.25rem 2.5rem;display:grid;grid-template-columns:64px 1fr 36px;gap:2rem;align-items:center;position:relative;overflow:hidden;transition:background .3s}
@@ -303,6 +323,10 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
   .pi-n,.pi-arr{display:none}
   .ri{grid-template-columns:40px 1fr;padding:1.4rem 1.5rem}
   .ri-tag{display:none}
+  .edu-list::before{display:none}
+  .edu-item{grid-template-columns:1fr;gap:.6rem;padding:1.75rem 1.5rem}
+  .edu-dot{display:none}
+  .edu-status{align-self:flex-start;margin-top:0}
   section{padding:5rem 1.5rem}
 }
 @media(max-width:600px){
@@ -355,6 +379,7 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
   <a class="nav-logo" href="#">HASSAN<span class="dot">.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#certs">Certs</a></li>
@@ -459,10 +484,43 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
   </div>
 </section>
 
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sh rv">
+    <span class="sh-num">03 / Education</span>
+    <h2 class="sh-title">Edu<span class="ghost">cation</span></h2>
+    <span class="sh-sub">Where I learned the craft</span>
+  </div>
+  <div class="edu-list">
+    <div class="edu-item rv">
+      <div class="edu-dot"><span></span></div>
+      <div>
+        <div class="edu-period">2023 — 2027 · Expected</div>
+        <h3 class="edu-degree">B.Sc. in Computer Science · AI Specialization</h3>
+        <div class="edu-school">Effat University</div>
+        <div class="edu-loc">Jeddah, Saudi Arabia</div>
+        <p class="edu-desc">Senior-year AI student focusing on machine learning, federated learning, NLP, and privacy-preserving AI systems. Coursework includes Algorithm Analysis, Advanced Topics in AI, Machine Learning, Software Engineering, Information &amp; Cyber Security, and Text Mining. Senior capstone: <strong style="color:var(--ink);font-weight:700">Smart City Data Governance Gateway</strong> — a compliance platform evaluating IoT datasets across PDPL, SDAIA, GDPR, NIST AI RMF, and ISO frameworks.</p>
+      </div>
+      <div class="edu-status current">In Progress</div>
+    </div>
+    <div class="edu-item rv rv-d2">
+      <div class="edu-dot"><span></span></div>
+      <div>
+        <div class="edu-period">Secondary Education</div>
+        <h3 class="edu-degree">High School Diploma</h3>
+        <div class="edu-school">Jeddah Knowledge International School (JKS)</div>
+        <div class="edu-loc">Jeddah, Saudi Arabia</div>
+        <p class="edu-desc">Completed secondary education with a focus on STEM subjects, building the mathematical and analytical foundation for university-level computer science and AI work. Developed early interests in programming, problem solving, and design that continue to shape my work today.</p>
+      </div>
+      <div class="edu-status done">Completed</div>
+    </div>
+  </div>
+</section>
+
 <!-- BUILT PROJECTS -->
 <section id="work">
   <div class="sh rv">
-    <span class="sh-num">03 / Projects</span>
+    <span class="sh-num">04 / Projects</span>
     <h2 class="sh-title">Built <span class="ghost">Projects</span></h2>
     <span class="sh-sub">Designed, built &amp; shipped</span>
   </div>
@@ -477,7 +535,7 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
 <!-- RESEARCH PAPERS -->
 <section id="research" style="background:var(--su)">
   <div class="sh rv">
-    <span class="sh-num">04 / Research</span>
+    <span class="sh-num">05 / Research</span>
     <h2 class="sh-title">Research <span class="ghost">Papers</span></h2>
     <span class="sh-sub">Academic contributions</span>
   </div>
@@ -495,7 +553,7 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
 <!-- CERTS -->
 <section id="certs">
   <div class="sh rv">
-    <span class="sh-num">05 / Credentials</span>
+    <span class="sh-num">06 / Credentials</span>
     <h2 class="sh-title">Certifi<span class="ghost">cations</span></h2>
     <span class="sh-sub">25 completed — click to verify</span>
   </div>
@@ -530,7 +588,7 @@ footer{border-top:1px solid var(--ru);padding:1.4rem 2.5rem;display:flex;justify
 
 <!-- CONTACT -->
 <section id="contact">
-  <span class="con-lbl rv">06 / Let's Connect</span>
+  <span class="con-lbl rv">07 / Let's Connect</span>
   <h2 class="con-h rv"><span class="ghost">Open to</span><em>Opportunities</em></h2>
   <p class="con-sub rv">Actively seeking internship and full-time roles in AI, software development, or UX design. If you think I'd be a great fit, let's talk.</p>
   <a href="mailto:Halsayed863@gmail.com" class="con-email rv">Halsayed863@gmail.com</a>
